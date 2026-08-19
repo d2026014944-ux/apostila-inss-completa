@@ -1,0 +1,64 @@
+edition: 0.1.0-auditoria
+status: pending_external_review
+policy: "Nenhuma questao sera comercializada antes da revisao independente do gabarito, comentario e direitos de uso."
+questions:
+  - id: portugues-q01
+    discipline: portugues
+    origin: internal-draft
+    license_status: pending_confirmation
+    review_status: pending_external_review
+  - id: portugues-q02
+    discipline: portugues
+    origin: internal-draft
+    license_status: pending_confirmation
+    review_status: pending_external_review
+  - id: raciocinio-q01
+    discipline: raciocinio
+    origin: internal-draft
+    license_status: pending_confirmation
+    review_status: pending_external_review
+  - id: raciocinio-q02
+    discipline: raciocinio
+    origin: internal-draft
+    license_status: pending_confirmation
+    review_status: pending_external_review
+  - id: constitucional-q01
+    discipline: constitucional
+    origin: internal-draft
+    license_status: pending_confirmation
+    review_status: pending_external_review
+  - id: administrativo-q01
+    discipline: administrativo
+    origin: internal-draft
+    license_status: pending_confirmation
+    review_status: pending_external_review
+  - id: previdenciario-q01
+    discipline: previdenciario
+    origin: internal-draft
+    license_status: pending_confirmation
+    review_status: pending_external_review
+  - id: previdenciario-q02
+    discipline: previdenciario
+    origin: internal-draft
+    license_status: pending_confirmation
+    review_status: pending_external_review
+  - id: etica-q01
+    discipline: etica
+    origin: internal-draft
+    license_status: pending_confirmation
+    review_status: pending_external_review
+  - id: informatica-q01
+    discipline: informatica
+    origin: internal-draft
+    license_status: pending_confirmation
+    review_status: pending_external_review
+  - id: contabilidade-q01
+    discipline: contabilidade
+    origin: internal-draft
+    license_status: pending_confirmation
+    review_status: pending_external_review
+  - id: atualidades-q01
+    discipline: atualidades
+    origin: internal-draft
+    license_status: pending_confirmation
+    review_status: pending_external_review

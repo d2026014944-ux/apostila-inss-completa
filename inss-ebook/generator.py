@@ -7,7 +7,8 @@ from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.enums import TA_CENTER, TA_LEFT, TA_JUSTIFY, TA_RIGHT
 from reportlab.platypus import (
     SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle,
-    PageBreak, KeepTogether, Flowable, Frame, PageTemplate, BaseDocTemplate
+    PageBreak, KeepTogether, Flowable, Frame, PageTemplate, BaseDocTemplate,
+    NextPageTemplate,
 )
 from reportlab.platypus.tableofcontents import TableOfContents
 from reportlab.pdfgen import canvas
@@ -16,6 +17,7 @@ import re
 
 from styles import CORES, CORES_DISCIPLINA, ICONES, PESOS
 from content import DISCIPLINAS
+from metadata import EDITION, edition_label
 
 # =====================================================
 # CONSTANTES
@@ -38,6 +40,7 @@ C_FUNDO_BOX = hex_cor(CORES['fundo_box'])
 C_FUNDO_DICA = hex_cor(CORES['fundo_dica'])
 C_FUNDO_EXERCICIO = hex_cor(CORES['fundo_exercicio'])
 C_FUNDO_ALERTA = hex_cor(CORES['fundo_alerta'])
+C_ALERTA = hex_cor(CORES['alerta'])
 C_CINZA = hex_cor(CORES['cinza_medio'])
 C_BRANCO = '#ffffff'
 C_PRETO = '#000000'
@@ -214,7 +217,7 @@ class BordaColorida(Flowable):
 
 class BoxDestaque(Flowable):
     """Caixa colorida com conteúdo (dica, alerta, etc)."""
-    def __init__(self, text, largura, cor_fundo, cor_borda, icone='💡', style=None):
+    def __init__(self, text, largura, cor_fundo, cor_borda, icone='[!] ', style=None):
         Flowable.__init__(self)
         self.text = text
         self.largura = largura
@@ -250,7 +253,7 @@ class CapaDisciplina(Flowable):
         self.largura = largura
         self.altura_pagina = altura_pagina
         self.cor = hex_cor(CORES_DISCIPLINA.get(chave, CORES['primaria']))
-        self.icone = ICONES.get(chave, '📘')
+        self.icone = ICONES.get(chave, 'ED')
 
     def wrap(self, availWidth, availHeight):
         return self.largura, self.altura_pagina - 4*cm
@@ -305,7 +308,7 @@ def cabecalho_rodape(canvas, doc):
     # Cabeçalho
     canvas.setFont('Helvetica', 8)
     canvas.setFillColor(HexColor(C_CINZA))
-    canvas.drawString(MARGEM, ALTURA - 1.2*cm, 'Apostila Completa INSS — Técnico do Seguro Social')
+    canvas.drawString(MARGEM, ALTURA - 1.2*cm, 'Apostila INSS - Tecnico do Seguro Social')
     canvas.drawRightString(LARGURA - MARGEM, ALTURA - 1.2*cm, f'Página {doc.page}')
     # Linha separadora
     canvas.setStrokeColor(HexColor('#cccccc'))
@@ -314,13 +317,18 @@ def cabecalho_rodape(canvas, doc):
     # Rodapé
     canvas.setFont('Helvetica', 7)
     canvas.setFillColor(HexColor(C_CINZA))
-    canvas.drawCentredString(LARGURA/2, 1*cm, 'Material de estudo para concurso INSS — Uso pessoal — Todos os direitos reservados')
+    canvas.drawCentredString(LARGURA/2, 1*cm, f'{edition_label()} - Material educacional independente')
     canvas.restoreState()
 
 
 def capa_rodape(canvas, doc):
-    """Sem cabeçalho/rodapé na capa."""
-    pass
+    """Pinta o fundo da capa sem cabeçalho ou rodape."""
+    canvas.saveState()
+    canvas.setFillColor(HexColor(C_PRIMARIA))
+    canvas.rect(0, 0, LARGURA, ALTURA, fill=1, stroke=0)
+    canvas.setFillColor(HexColor(C_SECUNDARIA))
+    canvas.rect(0, 0, LARGURA, 7*mm, fill=1, stroke=0)
+    canvas.restoreState()
 
 
 # =====================================================
@@ -372,7 +380,7 @@ def criar_sumario():
         nome = disc['nome']
         chave = disc['chave']
         peso = disc['peso']
-        icone = ICONES.get(chave, '📘')
+        icone = ICONES.get(chave, 'ED')
         cor = hex_cor(CORES_DISCIPLINA.get(chave, CORES['primaria']))
 
         # Linha do sumário com tabela
@@ -395,7 +403,7 @@ def criar_sumario():
     elementos.append(BordaColorida(LARGURA_UTIL, 1, C_CINZA))
     elementos.append(Spacer(1, 5*mm))
     elementos.append(Paragraph(
-        '<i>Total de 9 disciplinas • Conteúdo baseado nos últimos editais INSS (2022/2025)</i>',
+        f'<i>Total de {len(DISCIPLINAS)} disciplinas • {edition_label()}</i>',
         ParagraphStyle('Nota', parent=style_conteudo, fontSize=9, textColor=HexColor(C_CINZA), alignment=TA_CENTER)
     ))
 
@@ -435,12 +443,12 @@ def criar_capa_principal():
 
     elementos.append(Spacer(1, 30*mm))
     elementos.append(Paragraph(
-        '<font color="#999999">Material de estudo completo • Todas as 9 disciplinas do edital</font>',
+        f'<font color="#999999">Material de estudo • Edicao {EDITION.edition} • Status: {EDITION.status}</font>',
         ParagraphStyle('Sub', parent=style_conteudo, fontSize=11, textColor=HexColor('#999999'), alignment=TA_CENTER)
     ))
     elementos.append(Spacer(1, 5*mm))
     elementos.append(Paragraph(
-        '<font color="#999999">2026</font>',
+        f'<font color="#999999">Data de corte: {EDITION.reference_date}</font>',
         ParagraphStyle('Ano', parent=style_conteudo, fontSize=14, textColor=HexColor(C_DESTAQUE), alignment=TA_CENTER, fontName='Helvetica-Bold')
     ))
 
@@ -488,7 +496,7 @@ def criar_pagina_disciplina(disc, idx):
                 LARGURA_UTIL,
                 C_FUNDO_DICA,
                 C_DESTAQUE,
-                '🎯'
+                '[DICA]'
             ))
 
         elementos.append(Spacer(1, 8*mm))
@@ -497,7 +505,7 @@ def criar_pagina_disciplina(disc, idx):
     if exercicios:
         elementos.append(PageBreak())
         elementos.append(Paragraph(
-            f'📝 Exercícios — {nome}',
+            f'EXERCICIOS - {nome}',
             ParagraphStyle('ExTitulo', parent=style_topico, textColor=HexColor(cor), fontSize=20)
         ))
         elementos.append(BordaColorida(LARGURA_UTIL, 3, cor))
@@ -509,7 +517,7 @@ def criar_pagina_disciplina(disc, idx):
                 LARGURA_UTIL,
                 C_FUNDO_BOX,
                 cor,
-                '❓'
+                '[Q]'
             ))
             elementos.append(Spacer(1, 3*mm))
 
@@ -518,11 +526,11 @@ def criar_pagina_disciplina(disc, idx):
 
             elementos.append(Spacer(1, 2*mm))
             elementos.append(Paragraph(
-                f'✅ Resposta: {ex["resposta"]}',
+                f'Resposta: {ex["resposta"]}',
                 style_resposta
             ))
             elementos.append(Paragraph(
-                f'💬 {ex["comentario"]}',
+                f'Comentario: {ex["comentario"]}',
                 style_comentario
             ))
             elementos.append(Spacer(1, 6*mm))
@@ -536,20 +544,29 @@ def criar_pagina_estrategia():
     elementos.append(PageBreak())
 
     elementos.append(Paragraph(
-        '🎯 Estratégia de Estudos para o INSS',
+        'ESTRATEGIA DE ESTUDOS PARA O INSS',
         ParagraphStyle('EstTitulo', parent=style_topico, fontSize=22, textColor=HexColor(C_PRIMARIA))
     ))
     elementos.append(BordaColorida(LARGURA_UTIL, 3, C_DESTAQUE))
     elementos.append(Spacer(1, 8*mm))
 
+    elementos.append(BoxDestaque(
+        EDITION.disclaimer,
+        LARGURA_UTIL,
+        C_FUNDO_ALERTA,
+        C_ALERTA,
+        '!',
+    ))
+    elementos.append(Spacer(1, 5*mm))
+
     estrategias = [
-        ('📅 Cronograma (6-8 meses)', 'Meses 1-2: Português + Raciocínio Lógico (base). Meses 3-4: Direito Previdenciário (a fundo). Meses 5-6: Direito Constitucional + Administrativo + Ética. Meses 7-8: Informática + Contabilidade + Revisão geral.'),
-        ('⚖️ Direito Previdenciário é o jogo', '25% da prova! Estude Lei 8.213/91 e Decreto 3.048/99 linha por linha. Resolva 500+ questões de Previdenciário. É o que separa aprovados de reprovados.'),
-        ('📋 Formato Cebraspe: Certo ou Errado', 'A banca usa formato único com penalidade por erro. Se não tem CERTEZA, não marque. Errar tira ponto. Treine milhares de questões Cebraspe.'),
-        ('🔄 Revisão por flashcards', 'Previdenciário tem muitos números: prazos, idades, valores. Use Anki ou flashcards físicos para fixar dados numéricos.'),
-        ('📝 Caderno de erros', 'Toda questão errada → anotação. Revisar o caderno semanalmente é o que separa 70% de 85% de acerto.'),
-        ('🏃 Simulados completos', 'Faça 10+ simulados completos no formato Cebraspe antes da prova. Treine resistência mental (prova de 4h+).'),
-        ('📚 Material recomendado', 'Lei 8.213/91 (texto integral). Decreto 3.048/99 (regulamento). Constituição Federal (Arts. 1-32). Lei 8.112/90 (regime jurídico). Decreto 1.171/94 (ética).'),
+        ('CRONOGRAMA (6-8 MESES)', 'Meses 1-2: Português + Raciocínio Lógico (base). Meses 3-4: Direito Previdenciário (a fundo). Meses 5-6: Direito Constitucional + Administrativo + Ética. Meses 7-8: Informática + Contabilidade + Revisão geral.'),
+        ('DIREITO PREVIDENCIARIO ESTRATEGICO', '25% da prova! Estude Lei 8.213/91 e Decreto 3.048/99 linha por linha. Resolva 500+ questões de Previdenciário. É o que separa aprovados de reprovados.'),
+        ('FORMATO CEBRASPE: CERTO OU ERRADO', 'A banca usa formato único com penalidade por erro. Se não tem CERTEZA, não marque. Errar tira ponto. Treine milhares de questões Cebraspe.'),
+        ('REVISAO POR FLASHCARDS', 'Previdenciário tem muitos números: prazos, idades, valores. Use Anki ou flashcards físicos para fixar dados numéricos.'),
+        ('CADERNO DE ERROS', 'Toda questão errada -> anotação. Revisar o caderno semanalmente é o que separa 70% de 85% de acerto.'),
+        ('SIMULADOS COMPLETOS', 'Faça 10+ simulados completos no formato Cebraspe antes da prova. Treine resistência mental (prova de 4h+).'),
+        ('MATERIAL RECOMENDADO', 'Lei 8.213/91 (texto integral). Decreto 3.048/99 (regulamento). Constituição Federal (Arts. 1-32). Lei 8.112/90 (regime jurídico). Decreto 1.171/94 (ética).'),
     ]
 
     for titulo, texto in estrategias:
@@ -590,6 +607,7 @@ def gerar_pdf(nome_arquivo='Apostila_INSS_Completa.pdf'):
 
     # === CAPA PRINCIPAL ===
     story.extend(criar_capa_principal())
+    story.append(NextPageTemplate('normal'))
     story.append(PageBreak())
 
     # === SUMÁRIO ===

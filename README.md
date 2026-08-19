@@ -1,4 +1,8 @@
-# 📚 Apostila Completa INSS — Técnico do Seguro Social
+# Apostila INSS - Tecnico do Seguro Social
+
+> **Status atual:** edicao `0.1.0-auditoria`, em fase de curadoria e pre-edital. Este repositorio ainda nao representa uma edicao aprovada para comercializacao.
+
+O projeto gera um PDF educacional independente. Nenhuma informacao sobre vagas, salario, banca ou edital futuro deve ser tratada como confirmada sem publicacao oficial.
 
 Apostila de estudo completa para o concurso do **INSS (Instituto Nacional do Seguro Social)**, cargo de **Técnico do Seguro Social**, cobrindo **todas as 9 disciplinas** do edital.
 
@@ -16,7 +20,7 @@ Apostila de estudo completa para o concurso do **INSS (Instituto Nacional do Seg
 | 8 | 📊 Noções de Contabilidade | ~4% | 3 tópicos | ✅ Completo |
 | 9 | 🌍 Atualidades | ~3% | 3 tópicos | ✅ Completo |
 
-## 📂 Estrutura do Projeto
+## Estrutura do Projeto
 
 ```
 apostila-inss-completa/
@@ -28,6 +32,14 @@ apostila-inss-completa/
 │   ├── generator.py             # Gerador PDF (reportlab)
 │   ├── content.py               # Conteúdo das 9 disciplinas
 │   └── styles.py                # Configurações de estilo e cores
+│   ├── metadata.py               # Versao, status e data de corte
+│   ├── sources.yaml              # Matriz inicial de fontes oficiais
+│   ├── question_review.yaml      # Manifesto das 12 questoes para revisao
+│   └── validate_content.py       # Gate editorial antes do build
+├── docs/
+│   └── editorial-policy.md       # Politica de fontes, revisao e lancamento
+│   └── simulated-external-review.md # Simulacao interna do parecer
+├── requirements.txt              # Dependencias do gerador
 ├── memory/
 │   └── 2025-08-19-apostila-inss.md  # Registro de progresso
 └── AGENTS.md                    # Configuração do assistente IA
@@ -44,17 +56,16 @@ O ebook foi gerado com diagramação profissional usando **ReportLab**:
 - **Exercícios comentados** por disciplina com gabarito
 - **Página de estratégia** com cronograma de estudos
 
-## 🔧 Como Gerar o PDF
+## Como validar e gerar o PDF
 
 ```bash
+pip install -r requirements.txt
 cd inss-ebook
-python3 main.py
+python3 main.py --validate
+python3 main.py --output Apostila_INSS_Completa.pdf
 ```
 
-**Dependências:**
-```bash
-pip install reportlab
-```
+O comando `--validate` verifica a estrutura minima e exibe pendencias editoriais. Use `--strict` para bloquear tambem os avisos. Uma validacao estrutural bem-sucedida nao substitui revisao juridica, pedagogica ou checagem de direitos autorais.
 
 ## 📖 Fontes de Pesquisa
 
@@ -91,5 +102,10 @@ pip install reportlab
 
 ---
 
-**Criado em:** 19/08/2026  
-**Material de estudo para concurso INSS — Uso pessoal**
+**Edicao atual:** 0.1.0-auditoria  
+**Data de corte:** 19/08/2026  
+**Material educacional independente - nao aprovado para comercializacao**
+
+O PDF de auditoria gerado em `inss-ebook/Apostila_INSS_Auditoria.pdf` foi inspecionado visualmente e possui 72 paginas. A matriz de fontes e o manifesto de questoes ainda aguardam revisao juridica externa, confirmacao de autoria/licenca e assinatura do revisor.
+
+A simulacao de revisao esta em `docs/simulated-external-review.md` e conclui pelo bloqueio de comercializacao ate a correcao dos achados.

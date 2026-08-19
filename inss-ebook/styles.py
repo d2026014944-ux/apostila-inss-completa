@@ -31,17 +31,17 @@ CORES_DISCIPLINA = {
     'atualidades': (153, 0, 153),     # Magenta
 }
 
-# === ÍCONES EMOJI POR DISCIPLINA ===
+# === MARCADORES ASCII POR DISCIPLINA ===
 ICONES = {
-    'portugues': '📖',
-    'raciocinio': '🧮',
-    'constitucional': '⚖️',
-    'administrativo': '🏛️',
-    'previdenciario': '🛡️',
-    'etica': '🤝',
-    'informatica': '💻',
-    'contabilidade': '📊',
-    'atualidades': '🌍',
+    'portugues': 'PT',
+    'raciocinio': 'RL',
+    'constitucional': 'CF',
+    'administrativo': 'DA',
+    'previdenciario': 'DP',
+    'etica': 'ET',
+    'informatica': 'IT',
+    'contabilidade': 'CT',
+    'atualidades': 'AT',
 }
 
 # === PESOS DAS DISCIPLINAS ===

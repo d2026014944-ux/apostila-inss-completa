@@ -1,0 +1,78 @@
+edition: 0.1.0-auditoria
+status: pre-edital
+reference_date: 2026-08-19
+policy: "Fontes primarias sao obrigatorias para validacao; fontes secundarias sao apenas apoio."
+review_status: pending_external_review
+sources:
+  - id: constituicao-federal
+    title: "Constituicao da Republica Federativa do Brasil de 1988"
+    authority: "Planalto"
+    url: "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+    use_for: [constitucional, previdenciario, administrativo]
+      checked_at: 2026-08-19
+  - id: lei-8212
+    title: "Lei no 8.212/1991 - Plano de Custeio da Seguridade Social"
+    authority: "Planalto"
+    url: "https://www.planalto.gov.br/ccivil_03/leis/l8212cons.htm"
+    use_for: [previdenciario]
+      checked_at: 2026-08-19
+  - id: lei-8213
+    title: "Lei no 8.213/1991 - Planos de Beneficios da Previdencia Social"
+    authority: "Planalto"
+    url: "https://www.planalto.gov.br/ccivil_03/leis/l8213cons.htm"
+    use_for: [previdenciario]
+      checked_at: 2026-08-19
+  - id: decreto-3048
+    title: "Decreto no 3.048/1999 - Regulamento da Previdencia Social"
+    authority: "Planalto"
+    url: "https://www.planalto.gov.br/ccivil_03/decreto/d3048.htm"
+    use_for: [previdenciario]
+      checked_at: 2026-08-19
+  - id: ec-103
+    title: "Emenda Constitucional no 103/2019"
+    authority: "Planalto"
+    url: "https://www.planalto.gov.br/ccivil_03/constituicao/emendas/emc/emc103.htm"
+    use_for: [previdenciario]
+      checked_at: 2026-08-19
+  - id: lei-8112
+    title: "Lei no 8.112/1990 - Regime Juridico dos Servidores Publicos"
+    authority: "Planalto"
+    url: "https://www.planalto.gov.br/ccivil_03/leis/l8112cons.htm"
+    use_for: [administrativo, etica]
+      checked_at: 2026-08-19
+  - id: lei-9784
+    title: "Lei no 9.784/1999 - Processo Administrativo Federal"
+    authority: "Planalto"
+    url: "https://www.planalto.gov.br/ccivil_03/leis/l9784.htm"
+    use_for: [administrativo]
+      checked_at: 2026-08-19
+  - id: lei-8429
+    title: "Lei no 8.429/1992 - Improbidade Administrativa, com alteracoes vigentes"
+    authority: "Planalto"
+    url: "https://www.planalto.gov.br/ccivil_03/leis/l8429.htm"
+    use_for: [administrativo, etica]
+      checked_at: 2026-08-19
+  - id: decreto-1171
+    title: "Decreto no 1.171/1994 - Codigo de Etica Profissional do Servidor Publico"
+    authority: "Planalto"
+    url: "https://www.planalto.gov.br/ccivil_03/decreto/d1171.htm"
+    use_for: [etica]
+      checked_at: 2026-08-19
+  - id: lei-lgpd
+    title: "Lei no 13.709/2018 - Lei Geral de Protecao de Dados"
+    authority: "Planalto"
+    url: "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm"
+    use_for: [informatica, atualidades]
+      checked_at: 2026-08-19
+  - id: portal-inss
+    title: "Portal oficial do Instituto Nacional do Seguro Social"
+    authority: "INSS / gov.br"
+    url: "https://www.gov.br/inss/pt-br"
+    use_for: [previdenciario, atualidades]
+      checked_at: 2026-08-19
+  - id: portal-cebraspe
+    title: "Portal oficial de concursos e documentos da banca"
+    authority: "Cebraspe"
+    url: "https://www.cebraspe.org.br/concursos"
+    use_for: [all]
+      checked_at: 2026-08-19

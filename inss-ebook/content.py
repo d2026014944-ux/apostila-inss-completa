@@ -636,7 +636,7 @@ Educação, saúde, alimentação, trabalho, moradia, transporte, lazer, seguran
 • Fixar subsídios de autoridades
 
 **Processo Legislativo (Art. 59-69):**
-• Emendas constitucionais (2/3 + 2 turnos em cada casa)
+• Emendas constitucionais (3/5 dos votos + 2 turnos em cada casa)
 • Leis complementares (maioria absoluta)
 • Leis ordinárias (maoria simples)
 • Medidas provisórias (vigência 60 dias, prorrogável)""",
@@ -790,15 +790,15 @@ Educação, saúde, alimentação, trabalho, moradia, transporte, lazer, seguran
 • Fundamentos
 • Provas
 
-**Prazos (Art. 49):**
-• Interposição de recurso: 10 dias
-• Juntada de documentos: 5 dias
-• Manifestação sobre provas: 10 dias
+**Prazos relevantes:**
+• Interposição de recurso: 10 dias (Art. 59)
+• Manifestação do interessado: 10 dias, salvo prazo especifico (Art. 44)
+• Decisão após concluída a instrução: 30 dias, prorrogáveis por igual período com motivação (Art. 49)
 
 **Decisão administrativa (Art. 48):**
 • Deve ser fundamentada
 • Indicar recursos cabíveis
-• Prazo máximo para decisão: 15 dias (Art. 49)
+• Prazo geral para decisão: 30 dias, prorrogável por igual período com motivação (Art. 49)
 
 **Recursos:**
 • Hierárquico (para autoridade superior)
@@ -809,39 +809,36 @@ Educação, saúde, alimentação, trabalho, moradia, transporte, lazer, seguran
 • Pela própria administração
 • De ofício ou por provocação
 • Sem prazo decadencial""",
-                'dica': 'O prazo de 10 dias para recurso e 15 dias para decisão são os mais cobrados da Lei 9.784/99.'
+                'dica': 'O recurso administrativo tem prazo geral de 10 dias; a decisão tem prazo geral de 30 dias após a instrução, prorrogável uma vez com motivação.'
             },
             {
                 'titulo': 'Improbidade Administrativa — Lei 8.429/92',
-                'conteudo': """**3 tipos de improbidade:**
+                'conteudo': """**A Lei no 8.429/1992 exige leitura conforme a redacao vigente e o elemento subjetivo do dolo.**
 
-**1. Enriquecimento ilícito (Art. 9°):**
-• Receber vantagem indevida
-• Aceitar promessa de vantagem
-• Desvio de bens públicos
-• Pena: ressarcimento + perda da função + suspensão de direitos políticos
+**1. Enriquecimento ilicito (Art. 9°):**
+• Auferir vantagem patrimonial indevida em razao do cargo
+• A conduta deve ser dolosa
+• As sancoes devem ser conferidas no Art. 12, I, conforme a edicao vigente
 
-**2. Prejuízo ao erário (Art. 10°):**
-• Facilitar ou permitir lesão ao patrimônio público
-• Agir com dolo ou culpa grave
-• Pena: ressarcimento + perda da função + multa
+**2. Prejuizo ao erario (Art. 10°):**
+• Causar dano efetivo ao patrimonio publico por conduta dolosa
+• Nao basta mera irregularidade ou presuncao de dano
+• As sancoes devem ser conferidas no Art. 12, II, conforme a edicao vigente
 
-**3. Atentado aos princípios (Art. 11°):**
-• Praticar ato visando fim proibido
-• Descumprir dever funcional
-• Pena: ressarcimento + suspensão de direitos políticos
+**3. Atentado aos principios (Art. 11°):**
+• Praticar dolosamente uma das condutas tipificadas no artigo
+• A lista legal e taxativa; nao basta afirmar genericamente que houve falta etica
+• As sancoes devem ser conferidas no Art. 12, III, conforme a edicao vigente
 
-**Punições:**
-• Perda da função pública
-• Suspensão dos direitos políticos (3 a 5 anos)
-• Proibição de contratar com o Poder Público (3 a 5 anos)
-• Multa civil
+**Sancoes e legitimidade:**
+• Variam conforme o inciso do Art. 12 e nao podem ser resumidas em uma lista unica
+• A acao de improbidade deve seguir o Art. 17 e a interpretacao constitucional vigente
+• Nao atribuir legitimidade a qualquer cidadao sem base legal especifica
 
 **Legitimidade ativa:**
-• MP (obrigatório)
-• Pessoa jurídica lesada
-• Qualquer cidadão""",
-                'dica': 'Diferencie os 3 tipos: enriquecimento (ganhou algo), erário (perdeu dinheiro), princípios (feriu ética).'
+• Conferir o Art. 17 e os entendimentos vinculantes do STF na data de corte
+• Nao confundir representacao por qualquer pessoa com legitimidade para propor a acao""",
+                'dica': 'Diferencie: Art. 9 = vantagem patrimonial indevida; Art. 10 = dano efetivo ao erario; Art. 11 = conduta dolosa tipificada contra principios.'
             },
         ],
         'exercicios': [
@@ -911,7 +908,7 @@ Conjunto integrado de ações de iniciativa dos Poderes Públicos e da sociedade
 **Contribuição do segurado facultativo:**
 • 20% sobre salário mínimo (plano normal)
 • 11% sobre salário mínimo (plano simplificado)
-• 5% sobre salário mínimo (baixa renda — BPC/LOAS)
+• 5% sobre salário mínimo para facultativo de baixa renda, observados os requisitos legais; isso não é contribuição para o BPC/LOAS
 
 **Terceiros (Art. 3°):**
 • Cooperativas, condomínios, templos, partidos, sindicatos
@@ -945,9 +942,10 @@ Conjunto integrado de ações de iniciativa dos Poderes Públicos e da sociedade
 **Qualidade de segurado:**
 • Adquire com a primeira contribuição
 • Mantém durante 12 meses após última contribuição (período de graça)
-• + 12 meses se desempregado (total: 24 meses)
-• + 12 meses se prisão (total: 36 meses)
-• Perde com 12 meses sem contribuição (sem período de graça)
+• Pode haver extensão de 12 meses por desemprego comprovado
+• Pode haver outra extensão de 12 meses quando preenchido o requisito legal de contribuições sem perda da qualidade
+• O segurado detido ou recluso possui hipótese própria no Art. 15, IV
+• A perda ocorre após o fim do período de graça, observadas as regras legais
 
 **Carência (Art. 24):**
 • Número mínimo de contribuições mensais
@@ -956,7 +954,7 @@ Conjunto integrado de ações de iniciativa dos Poderes Públicos e da sociedade
 • Auxílio-doença: 12 contribuições
 • Aposentadoria por invalidez: 12 contribuições
 • Salário-maternidade: sem carência para empregadas""",
-                'dica': 'O período de graça (12+12+12 meses) é uma das questões mais cobradas. Memorize: 12 padrão + 12 desempregado + 12 preso.'
+                'dica': 'O periodo de graca exige identificar a categoria do segurado e as extensoes condicionais do Art. 15; nao memorize uma formula fixa.'
             },
             {
                 'titulo': 'Benefícios Previdenciários — Visão Geral',
@@ -1224,18 +1222,18 @@ Conjunto integrado de ações de iniciativa dos Poderes Públicos e da sociedade
         ],
         'exercicios': [
             {
-                'enunciado': 'Sobre o período de graça, é CORRETO afirmar que o segurado mantém a qualidade de segurado por:',
+                'enunciado': 'Considerando a regra geral do segurado que deixou de exercer atividade remunerada, sem outra extensão já demonstrada, é CORRETO afirmar que:',
                 'alternativas': [
                     'A) 6 meses após a última contribuição, independentemente da situação.',
-                    'B) 12 meses após a última contribuição, podendo estender por mais 12 se estiver desempregado.',
+                    'B) Mantém a qualidade por 12 meses após a última contribuição, podendo haver extensão por mais 12 se comprovar desemprego involuntário.',
                     'C) 24 meses após a última contribuição, sem possibilidade de extensão.',
                     'D) 12 meses após a última contribuição, sem possibilidade de extensão.',
                 ],
                 'resposta': 'B',
-                'comentario': 'Período de graça: 12 meses padrão + 12 meses se desempregado (total 24). Se preso: +12 (total 36).'
+                'comentario': 'A regra geral é de 12 meses. A extensão por desemprego depende de comprovação; outras hipóteses e requisitos devem ser conferidos no Art. 15 da Lei 8.213/91.'
             },
             {
-                'enunciado': 'Após a Reforma da Previdência (EC 103/2019), a fórmula de cálculo do salário de benefício para homem com 30 anos de contribuição é:',
+                'enunciado': 'Na hipótese de aposentadoria programada do RGPS sujeita à regra geral de cálculo da EC 103/2019, para homem com 30 anos de contribuição, o percentual inicial sobre a média será:',
                 'alternativas': [
                     'A) 100% da média de todas as contribuições.',
                     'B) 80% das maiores contribuições.',
@@ -1243,7 +1241,7 @@ Conjunto integrado de ações de iniciativa dos Poderes Públicos e da sociedade
                     'D) 70% da média + 2% por ano que exceder 25 anos = 80%.',
                 ],
                 'resposta': 'C',
-                'comentario': '60% + 2% × (30-20) = 60% + 20% = 80% da média de todas as contribuições.'
+                'comentario': 'Na hipótese indicada, 60% + 2% × (30-20) = 80% da média. O cálculo depende do benefício, do histórico de filiação e das regras de transição aplicáveis.'
             },
         ],
     },
@@ -1266,7 +1264,7 @@ Conjunto integrado de ações de iniciativa dos Poderes Públicos e da sociedade
 • Imparcialidade e isonomia
 • Lealdade e boa-fé
 
-**Deveres do servidor (Art. 11):**
+**Deveres do servidor (Anexo, Seção II):**
 I — Desempenhar com zelo e dedicação as atribuições
 II — Observar normas legais e regulamentares
 III — Ser assíduo e pontual
@@ -1275,7 +1273,7 @@ V — Manter conduta compatível com a moral pública
 VI — Respeitar o sigilo funcional
 VII — Representar contra ilegalidade ou abuso de poder
 
-**Proibições (Art. 12):**
+**Vedações (Anexo, Seção III):**
 I — Usar cargo para obter vantagens
 II — Favorecer pessoas com informações privilegiadas
 III — Revelar informações sigilosas
@@ -1283,11 +1281,9 @@ IV — Usar equipamentos para fins particulares
 V — Ausentar-se durante o expediente
 VI — Valer-se do cargo para obter favores
 
-**Punições:**
-• Advertência
-• Censura
-• Suspensão (até 90 dias)
-• Demissão""",
+**Comissao de etica:**
+• O Codigo preve a aplicacao da pena de censura etica
+• Advertencia, suspensao e demissao pertencem ao regime disciplinar aplicavel e nao devem ser atribuidas automaticamente ao Decreto no 1.171/1994""",
                 'dica': 'O Decreto 1.171/94 estabelece o Código de Ética. É diferente da Lei 8.429/92 (Improbidade). Memorize ambos.'
             },
             {
@@ -1296,34 +1292,33 @@ VI — Valer-se do cargo para obter favores
 • Receber, para si ou para outrem, dinheiro, bens ou qualquer vantagem
 • Aceitar promessa de vantagem
 • Desviar bens, rendas ou verbas públicas
-• Pena: perda da função + suspensão 3-8 anos + multa
+• As sancoes devem ser conferidas no Art. 12, I, conforme a edicao vigente
 
 **Art. 10° — Lesão ao erário:**
 • Facilitar ou permitir lesão ao patrimônio público
 • Permite ou facilita a ação de terceiros
-• Age com dolo ou culpa grave
-• Pena: perda da função + multa + ressarcimento
+• A conduta exige dolo, conforme a redacao vigente
+• As sancoes devem ser conferidas no Art. 12, II
 
 **Art. 11° — Atentado aos princípios:**
 • Praticar ato visando fim proibido ou não vedado por lei
 • Praticar ato com excesso de poder
 • Deixar de prestar contas quando obrigatório
-• Pena: suspensão 1-3 anos + multa
+• As sancoes devem ser conferidas no Art. 12, III, conforme a edicao vigente
 
-**Prescrição:**
-• 5 anos a partir da perda da função pública
-• 3 anos a partir da condenação
+**Prescricao:**
+• Conferir o Art. 23 na redacao vigente e a jurisprudencia aplicavel
 
 **Legitimidade ativa:**
 • MP (obrigatório)
 • Poder Público lesado
-• Qualquer cidadão""",
-                'dica': 'Art. 9° = ganhou. Art. 10° = perdeu dinheiro público. Art. 11° = feriu ética/princípios.'
+• Nao atribuir legitimidade a qualquer cidadao sem base legal especifica""",
+                'dica': 'Art. 9 = vantagem patrimonial indevida; Art. 10 = dano efetivo ao erario; Art. 11 = conduta dolosa tipificada.'
             },
         ],
         'exercicios': [
             {
-                'enunciado': 'O servidor público que utiliza informações privilegiadas do cargo para obter vantagem pessoal comete:',
+                'enunciado': 'Considerando que a vantagem pessoal seja uma vantagem patrimonial indevida obtida em razão do cargo, a conduta pode caracterizar:',
                 'alternativas': [
                     'A) Apenas infração disciplinar.',
                     'B) Improbidade administrativa por atentado aos princípios.',
@@ -1331,7 +1326,7 @@ VI — Valer-se do cargo para obter favores
                     'D) Apenas violação do Código de Ética.',
                 ],
                 'resposta': 'C',
-                'comentario': 'Se houve vantagem pessoal (enriquecimento), configura Art. 9° (enriquecimento ilícito). Se apenas desvio ético sem vantagem, seria Art. 11°.'
+                'comentario': 'Com vantagem patrimonial indevida e dolo, a hipótese se aproxima do Art. 9° da Lei 8.429/92. A classificação exige análise dos fatos e não decorre automaticamente da expressão vantagem pessoal.'
             },
         ],
     },
@@ -1747,7 +1742,7 @@ VI — Valer-se do cargo para obter favores
         ],
         'exercicios': [
             {
-                'enunciado': 'O principal instrumento de política monetária utilizado pelo Banco Central do Brasil para controlar a inflação é:',
+                'enunciado': 'No regime de metas para a inflação, qual taxa é utilizada como principal referência da política monetária do Banco Central do Brasil?',
                 'alternativas': [
                     'A) A taxa SELIC.',
                     'B) O câmbio flutuante.',
@@ -1755,7 +1750,7 @@ VI — Valer-se do cargo para obter favores
                     'D) A emissão de moeda.',
                 ],
                 'resposta': 'A',
-                'comentario': 'A SELIC (taxa básica de juros) é o principal instrumento de política monetária do BCB. Ao aumentá-la, reduz a inflação.'
+                'comentario': 'A taxa Selic é a taxa básica e a principal referência da política monetária. A transmissão para a inflação depende das condições econômicas; não é correto tratar o efeito como automático.'
             },
         ],
     },
