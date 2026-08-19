@@ -60,6 +60,8 @@ def validate_content(strict=False):
         warnings.append("a matriz de fontes ainda possui itens sem data de consulta")
     elif source_text:
         warnings.append("fontes catalogadas aguardam conferencia juridica externa")
+    if "access_status: not_confirmed" in source_text:
+        warnings.append("fontes legislativas aguardam confirmacao de acesso e versao consolidada")
 
     question_file = Path(__file__).with_name("question_review.yaml")
     question_text = question_file.read_text(encoding="utf-8") if question_file.exists() else ""
