@@ -54,47 +54,47 @@ styles = getSampleStyleSheet()
 style_disciplina = ParagraphStyle(
     'Disciplina',
     parent=styles['Heading1'],
-    fontSize=26,
-    leading=32,
-    textColor=HexColor(C_BRANCO),
+    fontSize=30,
+    leading=34,
+    textColor=HexColor(C_PRIMARIA),
     alignment=TA_LEFT,
     spaceAfter=6*mm,
-    fontName='Helvetica-Bold',
+    fontName='Times-Bold',
 )
 
 # Estilo para subtítulo da disciplina
 style_subtitulo_disciplina = ParagraphStyle(
     'SubtituloDisciplina',
     parent=styles['Normal'],
-    fontSize=13,
-    leading=18,
-    textColor=HexColor('#e0e0e0'),
+    fontSize=11,
+    leading=16,
+    textColor=HexColor(C_CINZA),
     alignment=TA_LEFT,
-    fontName='Helvetica',
+    fontName='Times-Italic',
 )
 
 # Estilo para tópico
 style_topico = ParagraphStyle(
     'Topico',
     parent=styles['Heading2'],
-    fontSize=17,
-    leading=22,
+    fontSize=16,
+    leading=20,
     textColor=HexColor(C_PRIMARIA),
     spaceBefore=8*mm,
     spaceAfter=4*mm,
-    fontName='Helvetica-Bold',
+    fontName='Times-Bold',
 )
 
 # Estilo para conteúdo
 style_conteudo = ParagraphStyle(
     'Conteudo',
     parent=styles['Normal'],
-    fontSize=10.5,
-    leading=16,
+    fontSize=10.2,
+    leading=14,
     textColor=HexColor('#333333'),
     alignment=TA_JUSTIFY,
     spaceAfter=3*mm,
-    fontName='Helvetica',
+    fontName='Times-Roman',
 )
 
 # Estilo para listas
@@ -111,10 +111,10 @@ style_dica = ParagraphStyle(
     'Dica',
     parent=styles['Normal'],
     fontSize=10,
-    leading=15,
+    leading=14,
     textColor=HexColor('#8B6914'),
     alignment=TA_LEFT,
-    fontName='Helvetica-Oblique',
+    fontName='Times-Italic',
     leftIndent=4*mm,
 )
 
@@ -122,11 +122,11 @@ style_dica = ParagraphStyle(
 style_exercicio = ParagraphStyle(
     'Exercicio',
     parent=styles['Normal'],
-    fontSize=10.5,
-    leading=16,
+    fontSize=10.2,
+    leading=14,
     textColor=HexColor('#333333'),
     alignment=TA_LEFT,
-    fontName='Helvetica',
+    fontName='Times-Roman',
     spaceAfter=2*mm,
 )
 
@@ -138,7 +138,7 @@ style_alternativa = ParagraphStyle(
     leading=15,
     textColor=HexColor('#333333'),
     alignment=TA_LEFT,
-    fontName='Helvetica',
+    fontName='Times-Roman',
     leftIndent=8*mm,
     spaceAfter=1*mm,
 )
@@ -151,7 +151,7 @@ style_resposta = ParagraphStyle(
     leading=14,
     textColor=HexColor(C_SUCESSO),
     alignment=TA_LEFT,
-    fontName='Helvetica-Bold',
+    fontName='Times-Bold',
     spaceBefore=2*mm,
 )
 
@@ -163,7 +163,7 @@ style_comentario = ParagraphStyle(
     leading=14,
     textColor=HexColor(C_CINZA),
     alignment=TA_LEFT,
-    fontName='Helvetica-Oblique',
+    fontName='Times-Italic',
     leftIndent=8*mm,
 )
 
@@ -171,20 +171,20 @@ style_comentario = ParagraphStyle(
 style_sumario_titulo = ParagraphStyle(
     'SumarioTitulo',
     parent=styles['Heading1'],
-    fontSize=22,
+    fontSize=20,
     textColor=HexColor(C_PRIMARIA),
     alignment=TA_CENTER,
     spaceAfter=10*mm,
-    fontName='Helvetica-Bold',
+    fontName='Times-Bold',
 )
 
 style_sumario_item = ParagraphStyle(
     'SumarioItem',
     parent=styles['Normal'],
-    fontSize=12,
-    leading=20,
+    fontSize=10.5,
+    leading=16,
     textColor=HexColor('#333333'),
-    fontName='Helvetica',
+    fontName='Times-Roman',
     leftIndent=5*mm,
 )
 
@@ -194,7 +194,7 @@ style_sumario_peso = ParagraphStyle(
     fontSize=11,
     leading=20,
     textColor=HexColor(C_DESTAQUE),
-    fontName='Helvetica-Bold',
+    fontName='Times-Bold',
     alignment=TA_RIGHT,
 )
 
@@ -212,7 +212,11 @@ class BordaColorida(Flowable):
 
     def draw(self):
         self.canv.setFillColor(HexColor(self.color))
-        self.canv.rect(0, 0, self.width, self.height, fill=1, stroke=0)
+        self.canv.setDash(1, 2)
+        self.canv.setStrokeColor(HexColor(self.color))
+        self.canv.setLineWidth(self.height)
+        self.canv.line(0, self.height / 2, self.width, self.height / 2)
+        self.canv.setDash()
 
 
 class BoxDestaque(Flowable):
@@ -229,6 +233,8 @@ class BoxDestaque(Flowable):
         self._w, self._h = self._para.wrap(largura - 12*mm, 1000*cm)
 
     def wrap(self, availWidth, availHeight):
+        self.largura = min(self.largura, availWidth)
+        self._w, self._h = self._para.wrap(self.largura - 12*mm, availHeight)
         return self.largura, self._h + 10*mm
 
     def draw(self):
@@ -261,41 +267,45 @@ class CapaDisciplina(Flowable):
     def draw(self):
         w = self.largura
         h = self.altura_pagina - 4*cm
-        # Fundo
+        panel_width = 42*mm
+        self.canv.setFillColor(HexColor('#e7e9ec'))
+        self.canv.rect(0, 0, panel_width, h, fill=1, stroke=0)
         self.canv.setFillColor(HexColor(self.cor))
-        self.canv.roundRect(0, 0, w, h, 8, fill=1, stroke=0)
-        # Borda inferior
-        self.canv.setFillColor(HexColor(C_DESTAQUE))
-        self.canv.rect(0, 0, w, 6, fill=1, stroke=0)
-        # Ícone
-        self.canv.setFont('Helvetica', 60)
+        self.canv.rect(0, h - 54*mm, panel_width, 54*mm, fill=1, stroke=0)
+        self.canv.setFillColor(HexColor('#cbd0d6'))
+        for y in range(12, int(h), 22):
+            self.canv.circle(panel_width / 2, y*mm / 2, 1.2, fill=1, stroke=0)
+        self.canv.setFont('Times-Bold', 12)
         self.canv.setFillColor(HexColor(C_BRANCO))
-        self.canv.drawString(15*mm, h - 35*mm, self.icone)
-        # Nome
-        self.canv.setFont('Helvetica-Bold', 30)
-        self.canv.setFillColor(HexColor(C_BRANCO))
-        self.canv.drawString(15*mm, h - 55*mm, self.nome)
-        # Peso
-        self.canv.setFont('Helvetica-Bold', 16)
-        self.canv.setFillColor(HexColor(C_DESTAQUE))
-        self.canv.drawString(15*mm, h - 70*mm, f'Peso na prova: {self.peso}')
-        # Descrição
-        self.canv.setFont('Helvetica', 12)
-        self.canv.setFillColor(HexColor('#e0e0e0'))
+        self.canv.drawCentredString(panel_width / 2, h - 28*mm, self.icone)
+        self.canv.setFillColor(HexColor(C_PRIMARIA))
+        self.canv.setFont('Times-Bold', 30)
+        self.canv.drawString(55*mm, h - 55*mm, self.nome.upper())
+        self.canv.setDash(1, 2)
+        self.canv.setStrokeColor(HexColor('#bfc4ca'))
+        self.canv.line(55*mm, h - 62*mm, w, h - 62*mm)
+        self.canv.setDash()
+        self.canv.setFont('Times-Roman', 10)
+        self.canv.setFillColor(HexColor(C_CINZA))
+        self.canv.drawString(55*mm, h - 76*mm, 'DISCIPLINA DE PREPARACAO')
+        self.canv.setFont('Times-Bold', 16)
+        self.canv.drawString(55*mm, h - 86*mm, f'Peso indicado: {self.peso}')
+        self.canv.setFont('Times-Italic', 11)
+        self.canv.setFillColor(HexColor(C_CINZA))
         # Word wrap manual
         palavras = self.descricao.split()
         linha = ''
         y = h - 90*mm
         for p in palavras:
             teste = linha + ' ' + p if linha else p
-            if self.canv.stringWidth(teste, 'Helvetica', 12) < w - 30*mm:
+            if self.canv.stringWidth(teste, 'Times-Roman', 11) < w - 65*mm:
                 linha = teste
             else:
-                self.canv.drawString(15*mm, y, linha)
+                self.canv.drawString(55*mm, y, linha)
                 y -= 16
                 linha = p
         if linha:
-            self.canv.drawString(15*mm, y, linha)
+            self.canv.drawString(55*mm, y, linha)
 
 
 # =====================================================
@@ -306,16 +316,18 @@ def cabecalho_rodape(canvas, doc):
     """Adiciona cabeçalho e rodapé em cada página."""
     canvas.saveState()
     # Cabeçalho
-    canvas.setFont('Helvetica', 8)
+    canvas.setFont('Times-Roman', 8)
     canvas.setFillColor(HexColor(C_CINZA))
-    canvas.drawString(MARGEM, ALTURA - 1.2*cm, 'Apostila INSS - Tecnico do Seguro Social')
+    canvas.drawString(MARGEM, ALTURA - 1.2*cm, 'APOSTILA INSS - TECNICO DO SEGURO SOCIAL')
     canvas.drawRightString(LARGURA - MARGEM, ALTURA - 1.2*cm, f'Página {doc.page}')
     # Linha separadora
-    canvas.setStrokeColor(HexColor('#cccccc'))
-    canvas.setLineWidth(0.5)
+    canvas.setStrokeColor(HexColor('#c8ccd1'))
+    canvas.setLineWidth(1)
+    canvas.setDash(1, 2)
     canvas.line(MARGEM, ALTURA - 1.4*cm, LARGURA - MARGEM, ALTURA - 1.4*cm)
+    canvas.setDash()
     # Rodapé
-    canvas.setFont('Helvetica', 7)
+    canvas.setFont('Times-Roman', 7)
     canvas.setFillColor(HexColor(C_CINZA))
     canvas.drawCentredString(LARGURA/2, 1*cm, f'{edition_label()} - Material educacional independente')
     canvas.restoreState()
@@ -468,7 +480,11 @@ def criar_pagina_disciplina(disc, idx):
     icone = ICONES.get(chave, '📘')
 
     # Capa da disciplina
+    if idx > 0:
+        elementos.append(NextPageTemplate('chapter'))
+        elementos.append(PageBreak())
     elementos.append(CapaDisciplina(nome, chave, peso, descricao, LARGURA_UTIL, ALTURA))
+    elementos.append(NextPageTemplate('normal'))
     elementos.append(PageBreak())
 
     # Tópicos
@@ -594,12 +610,18 @@ def gerar_pdf(nome_arquivo='Apostila_INSS_Completa.pdf'):
     )
 
     # Frames e templates
-    frame = Frame(MARGEM, 1.5*cm, LARGURA_UTIL, ALTURA - 3.5*cm, id='normal')
+    column_gap = 8*mm
+    column_width = (LARGURA_UTIL - column_gap) / 2
+    frame_left = Frame(MARGEM, 1.5*cm, column_width, ALTURA - 3.5*cm, id='left')
+    frame_right = Frame(MARGEM + column_width + column_gap, 1.5*cm, column_width, ALTURA - 3.5*cm, id='right')
     frame_capa = Frame(MARGEM, 1.5*cm, LARGURA_UTIL, ALTURA - 3.5*cm, id='capa')
+    frame_chapter = Frame(MARGEM, 1.5*cm, LARGURA_UTIL, ALTURA - 3.5*cm, id='chapter')
 
     doc.addPageTemplates([
         PageTemplate(id='capa', frames=frame_capa, onPage=capa_rodape),
-        PageTemplate(id='normal', frames=frame, onPage=cabecalho_rodape),
+        PageTemplate(id='summary', frames=frame_chapter, onPage=cabecalho_rodape),
+        PageTemplate(id='normal', frames=[frame_left, frame_right], onPage=cabecalho_rodape),
+        PageTemplate(id='chapter', frames=frame_chapter, onPage=cabecalho_rodape),
     ])
 
     # Construir story
@@ -607,18 +629,17 @@ def gerar_pdf(nome_arquivo='Apostila_INSS_Completa.pdf'):
 
     # === CAPA PRINCIPAL ===
     story.extend(criar_capa_principal())
-    story.append(NextPageTemplate('normal'))
+    story.append(NextPageTemplate('summary'))
     story.append(PageBreak())
 
     # === SUMÁRIO ===
     story.extend(criar_sumario())
+    story.append(NextPageTemplate('chapter'))
     story.append(PageBreak())
 
     # === DISCIPLINAS ===
     for i, disc in enumerate(DISCIPLINAS):
         story.extend(criar_pagina_disciplina(disc, i))
-        if i < len(DISCIPLINAS) - 1:
-            story.append(PageBreak())
 
     # === ESTRATÉGIA ===
     story.extend(criar_pagina_estrategia())

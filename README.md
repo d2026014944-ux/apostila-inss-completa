@@ -109,3 +109,5 @@ O comando `--validate` verifica a estrutura minima e exibe pendencias editoriais
 O PDF de auditoria gerado em `inss-ebook/Apostila_INSS_Auditoria.pdf` foi inspecionado visualmente e possui 72 paginas. A matriz de fontes e o manifesto de questoes ainda aguardam revisao juridica externa, confirmacao de autoria/licenca e assinatura do revisor.
 
 A simulacao de revisao esta em `docs/simulated-external-review.md` e conclui pelo bloqueio de comercializacao ate a correcao dos achados.
+
+A versao editorial de referencia visual e `inss-ebook/Apostila_INSS_Editorial.pdf`. Ela adota duas colunas no miolo, tipografia serifada, linhas pontilhadas, boxes cinza/azul e aberturas de disciplina com faixa lateral, inspiradas no PDF `inss-ebook/-BASICO-PARA-CONCURSOS.pdf`, sem reutilizar sua marca, logotipo ou imagens.

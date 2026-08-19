@@ -2,15 +2,15 @@
 
 # === PALETA DE CORES ===
 CORES = {
-    'primaria': (0, 51, 102),        # Azul escuro institucional
-    'secundaria': (0, 102, 178),      # Azul médio
-    'destaque': (255, 153, 0),        # Laranja/Amarelo destaque
+    'primaria': (42, 45, 52),         # Grafite editorial
+    'secundaria': (56, 111, 168),     # Azul discreto de destaque
+    'destaque': (104, 146, 187),      # Azul claro de apoio
     'sucesso': (0, 128, 0),           # Verde
     'alerta': (204, 0, 0),            # Vermelho
-    'fundo_box': (230, 240, 250),     # Azul claro fundo
-    'fundo_dica': (255, 248, 220),    # Amarelo claro
-    'fundo_exercicio': (220, 245, 220),  # Verde claro
-    'fundo_alerta': (255, 230, 230),  # Vermelho claro
+    'fundo_box': (232, 234, 237),     # Cinza editorial
+    'fundo_dica': (244, 245, 246),    # Cinza claro
+    'fundo_exercicio': (232, 238, 244),  # Azul muito claro
+    'fundo_alerta': (245, 235, 235),  # Vermelho claro
     'cinza_escuro': (51, 51, 51),
     'cinza_medio': (102, 102, 102),
     'cinza_claro': (200, 200, 200),
@@ -20,15 +20,15 @@ CORES = {
 
 # === CORES POR DISCIPLINA ===
 CORES_DISCIPLINA = {
-    'portugues': (0, 102, 178),       # Azul
-    'raciocinio': (102, 0, 153),      # Roxo
-    'constitucional': (0, 128, 0),    # Verde
-    'administrativo': (178, 102, 0),  # Dourado
-    'previdenciario': (204, 0, 0),    # Vermelho
-    'etica': (0, 128, 128),           # Teal
-    'informatica': (0, 51, 102),      # Azul escuro
-    'contabilidade': (102, 51, 0),    # Marrom
-    'atualidades': (153, 0, 153),     # Magenta
+    'portugues': (56, 111, 168),
+    'raciocinio': (68, 103, 142),
+    'constitucional': (80, 91, 104),
+    'administrativo': (92, 112, 132),
+    'previdenciario': (67, 92, 119),
+    'etica': (83, 104, 119),
+    'informatica': (47, 75, 105),
+    'contabilidade': (94, 101, 109),
+    'atualidades': (73, 113, 137),
 }
 
 # === MARCADORES ASCII POR DISCIPLINA ===
